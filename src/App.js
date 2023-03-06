@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{ useState } from 'react'
+import Header from './Header'
+import Content from './Content'
 
 function App() {
+
+  const [color, setColor] = useState("#fff");
+  const [textColor, setTextColor] = useState("black");
+
+  function changeColor(){
+     color === "#fff" ? setColor("#282c35") : setColor("#fff")
+     textColor === "black" ? setTextColor("#fff") : setTextColor("black")
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <div className='container' style={{background: color}}>
+    <Header darkMode={changeColor} white={textColor} />
+    <Content />
     </div>
-  );
+    </>
+  )
 }
 
-export default App;
+export default App
